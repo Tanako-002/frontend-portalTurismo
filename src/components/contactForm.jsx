@@ -1,28 +1,27 @@
 import React from "react";
+import axios from "axios";
 import { useState } from "react";
 import bg from "../assets/imagens/bg3.png"
-const ContactForm = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: '',
-    })
-    const handleChange = (e) =>{
-        setFormData({
-            ...formData,[e.target.name]: e.target.value
-        });
-    }
-    const handleSubmit = (e) =>{
-        e.preventDefault();
+const handleSubmit = async (e) => {
+
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/api/auth/login", {
+        email,
+        password
+      })
+      const userData = response.data;
+      localStorage.setItem("user", JSON.stringify(userData))
+      alert("usuario logado com sucesso!!")
+      navigate("/")
+    } catch (error) {
+      if (error.response) {
+        alert("Erro ao logar usuário email ou senha incorretos")
+      } else {
+        alert("erro ao conectar ao servidor")
+      }
+    };
  
-        console.log(`Mensagem enviada ${formData.name} , ${formData.email}`)
-        console.log(`${formData.message}`)
- 
-        alert('Mensagem enviada com sucesso')
- 
-        setFormData({name:'', email:'', message:''}) /* limpa os campos nome email e mensagem */
-   
-    }
     return(
         <>
         <div
