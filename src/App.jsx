@@ -5,7 +5,7 @@ import Home from "./pages/home"
 import ServicePage from "./pages/servicePage"
 import ContactPage from "./pages/contactPage"
 import AboutPage from "./pages/aboutpage"
-import LoginPage from "./pages/loginpage"
+import LoginPage from "./pages/loginPage"
 import RegisterPage from "./pages/registerPage"
 
 function App() {

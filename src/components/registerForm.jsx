@@ -10,7 +10,7 @@ const RegisterForm = () => {
         e.preventDefault();
      
         try {
-          const response = await axios.post("http://localhost:5000/api/users",{
+          const response = await axios.post("https://backend-portalturismo-67uj.onrender.com/api/users",{
             name: nome,
             email,
             password: senha
